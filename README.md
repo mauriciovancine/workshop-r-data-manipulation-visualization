@@ -13,6 +13,7 @@ Prof. Maurício Vancine
 
 **Resumo**  
 O minicurso apresentará os fundamentos da linguagem R e do IDE RStudio para a manipulação e visualização de dados através do tidyverse. O tidyverse é um conjunto de pacotes e funções que compartilham uma mesma estrutura e sintaxe, visando ajudar os usuários a criar um código eficiente e organizado. Os pacotes são focados principalmente na organização (leitura, filtragem, organização, seleção e resumo) e visualização de dados. Serão abordados os seguintes temas: (1) funcionamento da linguagem R, (2) introdução ao tidyverse e (3) visualização de dados. Ao final do minicurso espera-se que os participantes adquiram conhecimentos introdutórios do funcionamento da linguagem através do tidyverse, assim como na manipulação e visualização de dados tabulares.
+
 ---
 
 ### Informações aos participantes
@@ -58,6 +59,11 @@ sudo dpkg -i rstudio-2021.09.1-372-amd64.deb &&
 sudo apt install -fy && 
 rm rstudio-2021.09.1-372-amd64.deb
 ```
+
+**Pacotes**
+Para quem souber, por favor, instalem os pacotes desse script.
+
+[0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/00_script_r_data_manipulation-visualization.R)
 
 ---
 
