@@ -676,7 +676,7 @@ background-position: 50% 80%
 
 <br>
 
-### .center[`^  >>  * ou /  >>  + ou -`]
+### .center[**`PRIORITÁRIO`** `()` > `^` > `* ou /` > `+ ou -` **`NÃO PRIORITÁRIO`**]
 
 <br>
 

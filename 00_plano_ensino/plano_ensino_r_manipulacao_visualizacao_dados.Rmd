@@ -1,7 +1,7 @@
 ---
 title: "Plano de ensino"
 author: "Maurício Vancine"
-date: "17/11/2021"
+date: "17-19/11/2021"
 output: pdf_document
 ---
 
@@ -37,7 +37,7 @@ O curso oferecerá os principais conceitos teóricos e práticos sobre o uso da 
 
 ### Conteúdo
 
-### 1 Introdução à linguagem R
+### 1 Introdução à linguagem R (2 h)
 
 1. Linguagem R
 1. RStudio
@@ -58,7 +58,7 @@ O curso oferecerá os principais conceitos teóricos e práticos sobre o uso da 
 1. Principais erros
 1. Principal material de estudo
 
-### 2 Introdução ao tidyverse
+### 2 Introdução ao tidyverse (5 h)
 
 1. Contextualização
 1. tidyverse
@@ -73,7 +73,7 @@ O curso oferecerá os principais conceitos teóricos e práticos sobre o uso da 
 1. lubridate
 1. purrr
 
-### 3 Visualização de dados
+### 3 Visualização de dados (2 h)
 
 1. Contextualização
 1. Pacotes para produção de gráficos
