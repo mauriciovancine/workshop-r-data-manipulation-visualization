@@ -69,18 +69,18 @@ Para quem souber, por favor, instalem os pacotes desse script.
 
 ## Slides
 
-[0. Apresentações](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/00_slides_r_data_manipulation-visualization.html) <br>
-[1. Introdução à linguagem R](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/01_slides_r_data_manipulation-visualization.html) <br>
-[2. Introdução ao tidyverse](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/02_slides_r_data_manipulation-visualization.html) <br>
-[3. Visualização de dados](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/03_slides_r_data_manipulation-visualization.html) <br>
+[0. Apresentações](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/00_slides_intro_r_manipulacao_visualizacao_dados.html) <br>
+[1. Introdução à linguagem R](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/01_slides_intro_r_manipulacao_visualizacao_dados.html) <br>
+[2. Introdução ao tidyverse](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/02_slides_intro_r_manipulacao_visualizacao_dados.html) <br>
+[3. Visualização de dados](https://mauriciovancine.github.io/workshop-r-data-manipulation-visualization/01_slides/03_slides_intro_r_manipulacao_visualizacao_dados.html#1) <br>
 
 ---
 
 ## Scripts
 
-[0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/00_script_r_data_manipulation-visualization.R) <br>
-[1. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/01_script_r_data_manipulation-visualization.R) <br>
-[2. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/02_script_r_data_manipulation-visualization.R) <br>
-[3. Visualização de dados](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/03_script_r_data_manipulation-visualization.R) <br>
+[0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/00_script_intro_r_manipulacao_visualizacao_dados.R) <br>
+[1. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/01_script_intro_r_manipulacao_visualizacao_dados.R) <br>
+[2. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/02_script_intro_r_manipulacao_visualizacao_dados.R) <br>
+[3. Visualização de dados](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/03_script_intro_r_manipulacao_visualizacao_dados.R) <br>
 
 ---
