@@ -79,7 +79,7 @@ Para quem souber, por favor, instalem os pacotes desse script.
 ## Scripts
 
 [0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/00_script_intro_r_manipulacao_visualizacao_dados.R) <br>
-[1. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/01_script_intro_r_manipulacao_visualizacao_dados.R) <br>
+[1. Introdução à linguagem R](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/01_02_script_intro_r_manipulacao_visualizacao_dados.R) <br>
 [2. Introdução ao tidyverse](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/02_script_intro_r_manipulacao_visualizacao_dados.R) <br>
 [3. Visualização de dados](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/03_script_intro_r_manipulacao_visualizacao_dados.R) <br>
 
