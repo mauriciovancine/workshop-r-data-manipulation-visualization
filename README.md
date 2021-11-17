@@ -63,7 +63,7 @@ rm rstudio-2021.09.1-372-amd64.deb
 **Pacotes**
 Para quem souber, por favor, instalem os pacotes desse script.
 
-[0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/02_scripts/00_script_r_data_manipulation-visualization.R)
+[0. Instalar pacotes](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/02_scripts/00_script_intro_r_manipulacao_visualizacao_dados.R)
 
 ---
 
