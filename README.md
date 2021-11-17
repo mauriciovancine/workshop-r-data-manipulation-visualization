@@ -22,7 +22,7 @@ O minicurso apresentará os fundamentos da linguagem R e do IDE RStudio para a m
 17-19/11/2021 das 09h-12h
 
 **Plano de ensino**  
-[pdf](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/00_plano_ensino/plano_ensino_workshop-r-data-manipulation-visualization.pdf)
+[pdf](https://github.com/mauriciovancine/workshop-r-data-manipulation-visualization/blob/main/00_plano_ensino/plano_ensino_r_manipulacao_visualizacao_dados.pdf)
 
 **Contato**  
 Para mais informações ou dúvidas, envie e-mail para Maurício Vancine (mauricio.vancine@gmail.com)
