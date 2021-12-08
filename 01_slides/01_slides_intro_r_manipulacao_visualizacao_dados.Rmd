@@ -3862,11 +3862,11 @@ background-position: 40% 40%, 80% 90%
 
 ```{r eval=FALSE}
 # ler uma planilha eletronica (.csv)
-read.csv("ATLANTIC_AMPHIBIANS_sites.csv", encoding = "latin1")
+read.csv("ATLANTIC_AMPHIBIANS_sites.csv")
 ```
 
 ```{r echo=FALSE}
-read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"), encoding = "latin1")
+read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"))
 ```
 
 ---
@@ -3876,12 +3876,12 @@ read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"), enc
 ## Ler e atribuir uma planilha eletrônica (.csv) a um objeto
 
 ```{r echo=FALSE}
-da <- read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"), encoding = "latin1")
+da <- read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"))
 ```
 
 ```{r eval=FALSE}
 # ler e atribuir uma planilha eletronica (.csv) a um objeto
-da <- read.csv("ATLANTIC_AMPHIBIANS_sites.csv", encoding = "latin1")
+da <- read.csv("ATLANTIC_AMPHIBIANS_sites.csv")
 ```
 
 ```{r eval=FALSE}
@@ -3934,7 +3934,7 @@ library(openxlsx)
 ### Importar os dados
 ```{r eval=FALSE}
 # ler e atribuir uma planilha eletrônica (.xlsx) a um objeto
-da <- openxlsx::read.xlsx("ATLANTIC_AMPHIBIANS_sites.xlsx", sheet = 1, encoding = "latin1")
+da <- openxlsx::read.xlsx("ATLANTIC_AMPHIBIANS_sites.xlsx", sheet = 1)
 da
 ```
 
@@ -3970,8 +3970,7 @@ da
 
 ```{r include=FALSE}
 # ler e atribuir uma planilha eletronica (.csv) a um objeto
-da <- read.csv("/home/mude/data/github/course-geospatial-data-r/03_dados/tabelas/ATLANTIC_AMPHIBIANS_sites.csv",
-               encoding = "latin1")
+da <- read.csv("/home/mude/data/github/course-geospatial-data-r/03_dados/tabelas/ATLANTIC_AMPHIBIANS_sites.csv")
 ```
 
 ```{r}

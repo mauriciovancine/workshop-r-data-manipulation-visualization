@@ -4,7 +4,6 @@
 #' date: 2021-11-17
 #' ---
 
-# packages ----------------------------------------------------------------
 library(tidyverse)
 library(here)
 library(readxl)
@@ -48,23 +47,21 @@ library(here)
 here::here()
 
 # criar um arquivo .here
-# here::set_here("")
+# here::set_here()
 
 # 4. readr, readxl e writexl ----------------------------------------------
 # formato .csv
 # importar sites com here
-si <- read.csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"))
+si <- readr::read_csv(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.csv"))
 si
 
-object.size(si)
-
 # importar sites sem here
-si <- readr::read_csv("./03_dados/tabelas/ATLANTIC_AMPHIBIANS_sites.csv")
+si <- readr::read_csv("./03_dados/ATLANTIC_AMPHIBIANS_sites.csv")
 si
 
 # formato .txt
 # importar sites
-si <- readr::read_tsv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.txt"))
+si <- readr::read_tsv(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.txt"))
 si
 
 # importar .xlsx
@@ -76,17 +73,9 @@ library("readxl")
 library("writexl")
 
 # importar sites
-si <- readxl::read_xlsx(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.xlsx"), 
+si <- readxl::read_xlsx(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.xlsx"), 
                         sheet = 1)
 si
-
-# importar sites
-si <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"))
-si
-
-# importar especies
-sp <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_species.csv"))
-sp
 
 # 5. tibble --------------------------------------------------------------
 
@@ -118,15 +107,15 @@ class(tb_ch)
 
 # 3. nao faz correspondencia parcial, retorna NULL se a coluna nao existe com o nome especificado
 df$c 
-tb$c
+tb$ch
 
 # 6. magrittr (pipe - %>%) -----------------------------------------------
 # sem pipe
-sqrt(sum(1:100))
+sqrt(sum(1:100))  
 
 # com pipe
-1:100 %>% 
-  sum() %>% 
+1:100 %>%   
+  sum() %>%   
   sqrt()
 
 # fixar amostragem
@@ -226,9 +215,10 @@ head(penguins_raw_subs_na[, "Comments"])
 
 # 6. pivot_wider()
 # long para wide
-penguins_raw_pivot_wider <- tidyr::pivot_wider(data = penguins_raw[, c(2, 3, 13)], 
+penguins_raw_pivot_wider <- tidyr::pivot_wider(data = drop_na(penguins_raw[, c(2, 3, 13)]), 
                                                names_from = Species, 
-                                               values_from = `Body Mass (g)`)
+                                               values_from = `Body Mass (g)`,
+                                               values_fill = 0)
 head(penguins_raw_pivot_wider)
 
 # long para wide
@@ -245,6 +235,18 @@ penguins_raw_pivot_longer <- tidyr::pivot_longer(data = penguins_raw[, c(2, 3, 1
                                                  names_to = "medidas", 
                                                  values_to = "valores")
 head(penguins_raw_pivot_longer)
+
+vivi_pergunta <- penguins_raw_pivot_longer %>% 
+  tidyr::pivot_wider(names_from = Species,
+                     values_from = valores)
+
+vivi_pergunta <- penguins_raw[, c(5, 3)] %>% 
+  tidyr::pivot_wider(names_from = Species,
+                     values_from = Species,
+                     values_fn = length,
+                     values_fill = 0)
+vivi_pergunta
+
 
 # exercicio 10 ------------------------------------------------------------
 
@@ -269,6 +271,11 @@ head(penguins_raw_pivot_longer)
 # 13. *_join(): funções que juntam dados de duas tabelas através de uma coluna chave
 
 # 1. relocate()
+# reordenar colunas - nome
+penguins_relocate_col <- penguins %>% 
+  dplyr::relocate(sex, year, .after = island)
+head(penguins_relocate_col)
+
 # reordenar colunas - posicao
 penguins_relocate_ncol <- penguins %>% 
   dplyr::relocate(sex, year, .after = 2)
@@ -318,12 +325,11 @@ head(penguins_select_pull, 15)
 # 5. mutate()
 # adicionar colunas
 penguins_mutate <- penguins %>% 
-  dplyr::mutate(body_mass_kg = body_mass_g/1e3, .before = sex)
+  dplyr::mutate(body_mass_kg = body_mass_g/1e3, .before = body_mass_g)
 head(penguins_mutate)
 
 ## modificar varias colunas
 penguins_mutate_across <- penguins %>% 
-  
   dplyr::mutate(across(where(is.factor), as.character))
 head(penguins_mutate_across)
 
@@ -351,6 +357,11 @@ head(penguins_arrange_across)
 # 7. filter()
 # filtrar linhas por valores de uma coluna
 penguins_filter <- penguins %>% 
+  dplyr::filter(species == "Adelie")
+head(penguins_filter)
+
+# filtrar linhas por valores de uma coluna
+penguins_filter <- penguins %>% 
   dplyr::filter(body_mass_g >= 5000)
 head(penguins_filter)
 
@@ -367,7 +378,7 @@ head(penguins_filter_in)
 
 # filtrar linhas por nas
 penguins_filter_na <- penguins %>% 
-  dplyr::filter(!is.na(sex) == TRUE)
+  dplyr::filter(!is.na(sex))
 head(penguins_filter_na)
 
 # filtrar linhas por valores em um intervalo
@@ -399,6 +410,10 @@ head(penguins_slice_max)
 # selecionar linhas aleatoriamente
 penguins_slice_sample <- penguins %>% 
   dplyr::slice_sample(n = 30)
+head(penguins_slice_sample)
+
+penguins_slice_sample <- penguins %>% 
+  dplyr::slice_sample(prop = .5)
 head(penguins_slice_sample)
 
 # 9. distinct()
@@ -443,7 +458,7 @@ head(penguins_group_by_across)
 # resumo
 penguins_summarise <- penguins %>% 
   dplyr::group_by(species) %>% 
-  dplyr::summarize(body_mass_g_mean = mean(body_mass_g, na.rm = TRUE),
+  dplyr::summarise(body_mass_g_mean = mean(body_mass_g, na.rm = TRUE),
                    body_mass_g_sd = sd(body_mass_g, na.rm = TRUE))
 penguins_summarise
 
@@ -481,8 +496,10 @@ penguin_islands <- tibble(
 penguin_islands
 
 # juncao - left
-penguins_left_join <- dplyr::left_join(penguins, penguin_islands, by = "island")
-head(penguins_left_join)
+penguins_left_join <- dplyr::left_join(penguins, 
+                                       penguin_islands, 
+                                       by = "island")
+head(penguins_left_join[, c("island", "longitude", "latitude")])
 
 # manipular dados
 # selecionar colunas
@@ -570,10 +587,12 @@ stringr::str_sort(x = letters, dec = TRUE)
 # alterar valores das colunas
 penguins_stringr_valores <- penguins %>% 
   dplyr::mutate(species = stringr::str_to_lower(species))
+penguins_stringr_valores
 
 # alterar nome das colunas
 penguins_stringr_nomes <- penguins %>% 
   dplyr::rename_with(stringr::str_to_title)
+penguins_stringr_nomes
 
 # 10. forcats -------------------------------------------------------------
 
@@ -582,9 +601,9 @@ forcats::as_factor(penguins_raw$Species) %>% head()
 
 # mudar o nome dos niveis
 forcats::fct_recode(penguins$species, 
-                    ade = "Adelie", 
-                    chi = "Chinstrap", 
-                    gen = "Gentoo") %>% head()
+                    a = "Adelie", 
+                    c = "Chinstrap", 
+                    g = "Gentoo") %>% head()
 
 # inverter os niveis
 forcats::fct_rev(penguins$species) %>% head()

@@ -57,8 +57,8 @@ penguins
 hist(penguins$flipper_length_mm)
 
 hist(penguins$flipper_length_mm,
-     col = "gray50",
-     border = "gray")
+     col = "steelblue",
+     border = "darkgoldenrod1")
 
 hist(penguins$flipper_length_mm,
      col = "gray50",
@@ -99,7 +99,7 @@ hist(penguins$flipper_length_mm,
      main = "Comprimento da nadadeira dos penguins",
      xlab = "Comprimento da nadadeira (mm)",
      ylab = "Densidade",
-     br = 50,
+     br = 10,
      cex.main = 2,
      cex.lab = 2, 
      cex.axis = 1.5,
@@ -121,8 +121,8 @@ polygon(density(na.omit(penguins$flipper_length_mm)),
 # exportar
 # diretorio
 
-png(here::here("03_dados", "graficos", "plot_densidade.pdf"), 
-    wi = 20, he = 15)
+png(here::here("03_dados", "plot_densidade.png"), 
+    wi = 20, he = 15, un = "cm", res = 300)
 
 par(mar = c(5, 5, 5, 5))
 plot(density(na.omit(penguins$flipper_length_mm)),
@@ -143,8 +143,10 @@ ggplot(data = penguins, aes(x = flipper_length_mm))
 ggplot(data = penguins, aes(x = flipper_length_mm)) +
   geom_histogram()
 
-ggplot(data = penguins,  aes(x = flipper_length_mm)) +
-  geom_histogram(color = "black", fill = "cyan4", bins = 10)
+ggplot(data = penguins, aes(x = flipper_length_mm)) +
+  geom_histogram(color = "black", 
+                 fill = "cyan4", 
+                 bins = 10)
 
 ggplot(data = penguins, aes(x = flipper_length_mm)) +
   geom_histogram(color = "black", fill = "cyan4", 
@@ -172,11 +174,26 @@ ggplot(data = penguins,
        y = "Frequência") +
   theme_bw(base_size = 15)
 
+
+
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram(alpha = .5, position = "identity") +
+  scale_fill_manual(values = c("darkorange", 
+                               "darkorchid", "cyan4")) +
+  labs(title = "Comprimento da nadadeira dos penguins",
+       fill = "Espécies",
+       x = "Comprimento da nadadeira (mm)", 
+       y = "Frequência") +
+  theme_bw(base_size = 15)
+
+
+
 library(viridis)
 ggplot(data = penguins, 
        aes(x = flipper_length_mm, fill = species)) +
   geom_histogram(alpha = .5, position = "identity") +
-  scale_fill_viridis_d() +
+  scale_fill_manual(values = viridis::viridis(3)) +
   labs(title = "Comprimento da nadadeira dos penguins",
        fill = "Espécies",
        x = "Comprimento da nadadeira (mm)", 
@@ -230,7 +247,10 @@ ggplot_densidade <- ggplot(data = penguins,
        y = "Densidade", 
        fill = "Espécie") +
   theme_bw(base_size = 15)
-ggsave(filename = "histogram_ggplot2.png", plot = ggplot_densidade, wi = 20, he = 15, un = "cm", dpi = 300)
+ggplot_densidade
+ggsave(filename = "histogram_ggplot2.png", 
+       plot = ggplot_densidade, wi = 20, he = 15, 
+       un = "cm", dpi = 300)
 
 # ggpubr
 gghistogram(data = penguins, 
@@ -241,6 +261,17 @@ gghistogram(data = penguins,
             palette = c("darkorange", "darkorchid", "cyan4"),
             xlab = "Comprimento da nadadeira (mm)",
             ylab = "Frequência")
+
+ggpubr_densidade <- ggdensity(data = penguins, 
+                              x = "flipper_length_mm",
+                              add = "median",
+                              color = "species",
+                              fill = "species",
+                              palette = c("darkorange", "darkorchid", "cyan4"),
+                              xlab = "Comprimento da nadadeira (mm)",
+                              ylab = "Frequência")
+ggsave(filename = here::here("03_dados", "graficos", "densidade_ggpubr.png"), 
+       plot = ggpubr_densidade, wi = 20, he = 15, un = "cm", dpi = 300)
 
 # 7. grafico de setores ---------------------------------------------------
 
@@ -386,6 +417,9 @@ ggbarplot(penguins_count,
 
 # 9. grafico de caixas ----------------------------------------------------
 
+summary(aov(flipper_length_mm ~ as.factor(species),
+        data = penguins))
+
 # graphics
 boxplot(flipper_length_mm ~ as.factor(species),
         data = penguins,
@@ -401,8 +435,7 @@ boxplot(flipper_length_mm ~ as.factor(species),
 # ggplot2
 ggplot(data = penguins, 
        aes(x = species, y = flipper_length_mm, fill = species)) +
-  geom_boxplot(width = .3, 
-               show.legend = FALSE) +
+  geom_boxplot(width = .7, show.legend = FALSE) +
   scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
   theme_bw(base_size = 15) +
   labs(x = "Species", y = "Flipper length (mm)")
@@ -411,9 +444,9 @@ ggplot(data = penguins,
        aes(x = species, y = flipper_length_mm, fill = species)) +
   geom_boxplot(width = .3, 
                show.legend = FALSE) +
-  geom_jitter(alpha = .5, 
-              show.legend = FALSE, 
-              position = position_jitter(width = .1, seed = 0)) +
+  geom_jitter(alpha = .5,
+              show.legend = FALSE,
+              position = position_jitter(width = .05, seed = 0)) +
   scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
   theme_bw(base_size = 15) +
   labs(x = "Species", y = "Flipper length (mm)")
@@ -484,11 +517,9 @@ ggplot(data = penguins,
 
 ggplot(data = penguins, 
        aes(x = bill_length_mm, 
-           y = bill_depth_mm,
-           color = species,
-           shape = species)) +
+           y = bill_depth_mm)) +
   geom_point(size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "lm", se = TRUE) +
   scale_shape_manual(values = c(19, 15, 17))+
   scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
   theme_bw(base_size = 15) +
@@ -501,7 +532,7 @@ datasaurus_dozen %>%
   dplyr::filter(dataset == "dino") %>% 
   ggplot() +
   aes(x = x, y = y) +
-  geom_point(colour = "black", fill = "black", 
+  geom_point(colour = "purple", fill = "purple", 
              size = 5, alpha = .75, pch = 21) +
   theme_bw(base_size = 15)
 
@@ -748,6 +779,6 @@ htmlwidgets::saveWidget(widget = plot_penguins_scatter_int,
 
 # iniciar
 esquisse::esquisser(iris)
-esquisse::esquisser(palmerpenguins::penguins)
+esquisse::esquisser(na.omit(palmerpenguins::penguins))
 
 # end ---------------------------------------------------------------------

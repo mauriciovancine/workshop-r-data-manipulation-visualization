@@ -28,7 +28,8 @@ library(vegan)
 data(dune)
 attributes(dune)
 
-# modos dos objetos
+
+# modos dos objetos -------------------------------------------------------
 # numeric: numeros decimais ou inteiros
 # double
 obj_num_dou <- 1
@@ -91,7 +92,11 @@ mode(obj_com)
 # exemplo
 as.character(obj_num_dou)
 
-# estrutura dos objetos 
+
+# estrutura dos objetos ---------------------------------------------------
+
+# vector ----
+
 # 1. vector: homogeneo (um modo) e unidimensional (uma dimensao)
 
 # concatenar elementos
@@ -137,10 +142,6 @@ sa_com_rep
 # exercicio 05 ------------------------------------------------------------
 
 
-
-
-# -------------------------------------------------------------------------
-
 # coercao: vetor com elementos de modos diferentes
 ve <- c(1, "a", 3)
 ve
@@ -158,6 +159,9 @@ ve
 # as.double()
 # as.integer()
 # as.logical()
+
+
+# factor ----
 
 # 2. factor: homogeneo (um modo - sempre numeric), unidimensional (uma dimensao) e possui ainda levels (niveis)
 # factor nominal: variaveis nominais
@@ -193,10 +197,7 @@ class(fa_no)
 
 # exercicio 06 ------------------------------------------------------------
 
-
-
-
-# -------------------------------------------------------------------------
+# matrix ----
 
 # 3. matrix: homogeneo (um modo) e bidimensional (duas dimensao)
 # 1 dispondo elementos
@@ -233,7 +234,7 @@ ma_cbind
 
 
 
-# -------------------------------------------------------------------------
+# array ----
 
 # 4. array: homogeneo (um modo) e multidimensional (mais que duas dimensoes)
 # 1 Dispondo elementos
@@ -246,6 +247,8 @@ ve
 # array
 ar <- array(data = ve, dim = c(2, 2, 2))
 ar
+
+# data frame ----
 
 # 5. data frame: heterogeneo (mais de um modo) e bidimensional (duas dimensões)
 # 1 Combinando vetores horizontalmente
@@ -293,7 +296,7 @@ str(df_c)
 
 
 
-# -------------------------------------------------------------------------
+# lista ----
 
 # 6. list: heterogeneo (mais de um modo) e unidimensional (uma dimensao)
 # lista
@@ -509,6 +512,9 @@ df$abu2 <- sample(0:1, nrow(df), rep = TRUE)
 df$abu2
 df
 
+df$abu2 <- sqrt(df$abu)
+df
+
 # selecionar linhas de uma matriz ou data frame 
 df[df$abu > 4, ]
 
@@ -587,7 +593,7 @@ nulo
 
 # 5. diretorio de trabalho -----------------------------------------------
 # definir o diretorio de trabalho
-setwd("/home/mude/data/github/course-geospatial-data-r/03_dados/tabelas")
+setwd("/home/mude/data/github/workshop-r-data-manipulation-visualization/03_dados/tabelas")
   
 # verificar o diretorio
 getwd()
@@ -597,10 +603,10 @@ dir()
 
 # 6. importar dados ------------------------------------------------------
 # ler uma planilha eletronica (.csv)
-read.csv("ATLANTIC_AMPHIBIANS_sites.csv", encoding = "latin1")
+read.csv("ATLANTIC_AMPHIBIANS_sites.csv")
 
 # ler e atribuir uma planilha eletronica (.csv) a um objeto
-da <- read.csv("ATLANTIC_AMPHIBIANS_sites.csv", encoding = "latin1")
+da <- read.csv("ATLANTIC_AMPHIBIANS_sites.csv")
 
 # ver os dados
 da
@@ -609,7 +615,7 @@ da
 class(da)
 
 # ler e atribuir uma planilha simples (.txt) a um objeto
-da <- read.table("ATLANTIC_AMPHIBIANS_sites.txt", row.names = 1, header = TRUE, sep = "\t")
+da <- read.table("ATLANTIC_AMPHIBIANS_sites.txt", header = TRUE, sep = "\t")
 da
 
 # pacote openxlsx
@@ -694,10 +700,10 @@ write.csv(da_sp, "ATLANTIC_AMPHIBIAN_sites_sao_paulo.csv",
 
 # exportar planilha de texto (.txt)
 write.table(da_sp, "ATLANTIC_AMPHIBIAN_sites_sao_paulo.txt", 
-            row.names = FALSE, quote = FALSE, sep = ";")
+            row.names = FALSE, quote = FALSE, sep = "\t")
 
 # exportar planilha eletronica (.xlsx)
 openxlsx::write.xlsx(da_sp, "ATLANTIC_AMPHIBIAN_sites_sao_paulo.xlsx", 
-                     row.names = FALSE, quote = FALSE)
+                     row.names = TRUE, quote = TRUE, overwrite = TRUE)
 
 # end ---------------------------------------------------------------------

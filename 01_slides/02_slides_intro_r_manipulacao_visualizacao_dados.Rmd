@@ -446,8 +446,7 @@ background-position: 50% 80%
 
 ```{r}
 # importar sites com here
-si <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"),
-                      locale = readr::locale(encoding = "latin1"))
+si <- readr::read_csv(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.csv"))
 si
 ```
 
@@ -461,14 +460,12 @@ si
 
 ```{r eval=FALSE}
 # importar sites sem here
-si <- readr::read_csv("./03_dados/tabelas/ATLANTIC_AMPHIBIANS_sites.csv",
-                      locale = readr::locale(encoding = "latin1"))
+si <- readr::read_csv("./03_dados/ATLANTIC_AMPHIBIANS_sites.csv")
 si
 ```
 
 ```{r echo=FALSE}
-si <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"),
-                      locale = readr::locale(encoding = "latin1"))
+si <- readr::read_csv(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.csv"))
 si
 ```
 
@@ -482,7 +479,7 @@ si
 
 ```{r}
 # importar sites
-si <- readr::read_tsv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.txt"))
+si <- readr::read_tsv(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.txt")) # 
 si
 ```
 
@@ -553,47 +550,9 @@ library("writexl")
 
 ```{r}
 # importar sites
-si <- readxl::read_xlsx(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.xlsx"), 
+si <- readxl::read_xlsx(here::here("03_dados", "ATLANTIC_AMPHIBIANS_sites.xlsx"), 
                         sheet = 1)
 si
-```
-
----
-
-# Importar os dados
-
-## **Formato .csv**
-
-### Dados das localidades
-
-```{r include=FALSE}
-# importar sites
-si <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"),
-                      locale = readr::locale(encoding = "latin1"))
-si
-```
-
-```{r eval=FALSE}
-# importar sites
-si <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_sites.csv"),
-                      locale = readr::locale(encoding = "latin1"))
-si
-```
-
-### Dados das espécies
-
-```{r include=FALSE}
-# import especies
-sp <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_species.csv"),
-                      locale = readr::locale(encoding = "latin1"))
-sp
-```
-
-```{r eval=FALSE}
-# importar species
-sp <- readr::read_csv(here::here("03_dados", "tabelas", "ATLANTIC_AMPHIBIANS_species.csv"),
-                      locale = readr::locale(encoding = "latin1"))
-sp
 ```
 
 ---
